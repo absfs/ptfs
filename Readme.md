@@ -23,13 +23,14 @@ package main
 
 import (
     "fmt"
-    "reflect"
+    "os"
+    "time"
 
     "github.com/absfs/absfs"
     "github.com/absfs/ptfs"
 )
 
-type myfs struct{
+type myfs struct {
     //...
 }
 
@@ -53,9 +54,9 @@ func FsStringer(fs absfs.FileSystem) string {
 func main() {
     var fs absfs.FileSystem
     fs = &myfs{}
-    
+
     fmt.Println(FsStringer(fs)) // output: "It is a `myfs` type."
-    fs, _ = ptfs.NewFs(fs)
+    fs, _ = ptfs.NewFS(fs)
     fmt.Println(FsStringer(fs)) // output: "It doesn't look like anything to me."
 }
 ```
