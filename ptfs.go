@@ -34,6 +34,10 @@ func (f *Filer) Remove(name string) error {
 	return f.fs.Remove(name)
 }
 
+func (f *Filer) Rename(oldname, newname string) error {
+	return f.fs.Rename(oldname, newname)
+}
+
 // Stat returns the FileInfo structure describing file. If there is an error,
 // it will be of type *PathError.
 func (f *Filer) Stat(name string) (os.FileInfo, error) {
@@ -80,6 +84,10 @@ func (f *FileSystem) Mkdir(name string, perm os.FileMode) error {
 // happens.
 func (f *FileSystem) Remove(name string) error {
 	return f.fs.Remove(name)
+}
+
+func (f *FileSystem) Rename(oldname, newname string) error {
+	return f.fs.Rename(oldname, newname)
 }
 
 // Stat returns the FileInfo structure describing file. If there is an error,
@@ -166,6 +174,10 @@ func (f *SymlinkFileSystem) Mkdir(name string, perm os.FileMode) error {
 // happens.
 func (f *SymlinkFileSystem) Remove(name string) error {
 	return f.sfs.Remove(name)
+}
+
+func (f *SymlinkFileSystem) Rename(oldname, newname string) error {
+	return f.sfs.Rename(oldname, newname)
 }
 
 // Stat returns the FileInfo structure describing file. If there is an error,
