@@ -1,4 +1,10 @@
 # ptfs - Pass Through File System
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/absfs/ptfs.svg)](https://pkg.go.dev/github.com/absfs/ptfs)
+[![Go Report Card](https://goreportcard.com/badge/github.com/absfs/ptfs)](https://goreportcard.com/report/github.com/absfs/ptfs)
+[![CI](https://github.com/absfs/ptfs/actions/workflows/ci.yml/badge.svg)](https://github.com/absfs/ptfs/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 The `ptfs` package implements the `absfs` filesystem interfaces. `ptfs` wraps an object that implements one of the `absfs` interfaces, and passes all interfaces methods to the underlying type without modification, returning the unmodified results to the caller. 
 
 This is useful as a template for creating new `absfs` types, but it serves another subtle but important purpose.
