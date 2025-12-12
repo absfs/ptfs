@@ -1,6 +1,7 @@
 package ptfs
 
 import (
+	"io/fs"
 	"os"
 
 	"github.com/absfs/absfs"
@@ -60,4 +61,8 @@ func (f *File) Truncate(size int64) error {
 
 func (f *File) WriteString(s string) (n int, err error) {
 	return f.f.WriteString(s)
+}
+
+func (f *File) ReadDir(n int) ([]fs.DirEntry, error) {
+	return f.f.ReadDir(n)
 }

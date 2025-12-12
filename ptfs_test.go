@@ -321,27 +321,6 @@ func TestFileSystem_Chown(t *testing.T) {
 	_ = fs.Chown("/test.txt", 1000, 1000)
 }
 
-func TestFileSystem_Separator(t *testing.T) {
-	mfs := newMemFS(t)
-	fs, _ := ptfs.NewFS(mfs)
-
-	sep := fs.Separator()
-	expected := mfs.Separator()
-	if sep != expected {
-		t.Fatalf("expected separator %c, got %c", expected, sep)
-	}
-}
-
-func TestFileSystem_ListSeparator(t *testing.T) {
-	mfs := newMemFS(t)
-	fs, _ := ptfs.NewFS(mfs)
-
-	sep := fs.ListSeparator()
-	expected := mfs.ListSeparator()
-	if sep != expected {
-		t.Fatalf("expected list separator %c, got %c", expected, sep)
-	}
-}
 
 func TestFileSystem_Chdir(t *testing.T) {
 	mfs := newMemFS(t)
@@ -600,27 +579,6 @@ func TestSymlinkFileSystem_Chown(t *testing.T) {
 	_ = sfs.Chown("/test.txt", 1000, 1000)
 }
 
-func TestSymlinkFileSystem_Separator(t *testing.T) {
-	mfs := newMemFS(t)
-	sfs, _ := ptfs.NewSymlinkFS(mfs)
-
-	sep := sfs.Separator()
-	expected := mfs.Separator()
-	if sep != expected {
-		t.Fatalf("expected separator %c, got %c", expected, sep)
-	}
-}
-
-func TestSymlinkFileSystem_ListSeparator(t *testing.T) {
-	mfs := newMemFS(t)
-	sfs, _ := ptfs.NewSymlinkFS(mfs)
-
-	sep := sfs.ListSeparator()
-	expected := mfs.ListSeparator()
-	if sep != expected {
-		t.Fatalf("expected list separator %c, got %c", expected, sep)
-	}
-}
 
 func TestSymlinkFileSystem_Chdir(t *testing.T) {
 	mfs := newMemFS(t)

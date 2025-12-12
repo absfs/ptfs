@@ -1,6 +1,7 @@
 package ptfs
 
 import (
+	"io/fs"
 	"os"
 	"time"
 
@@ -59,6 +60,18 @@ func (f *Filer) Chown(name string, uid, gid int) error {
 	return f.fs.Chown(name, uid, gid)
 }
 
+func (f *Filer) ReadDir(name string) ([]fs.DirEntry, error) {
+	return f.fs.ReadDir(name)
+}
+
+func (f *Filer) ReadFile(name string) ([]byte, error) {
+	return f.fs.ReadFile(name)
+}
+
+func (f *Filer) Sub(dir string) (fs.FS, error) {
+	return absfs.FilerToFS(f, dir)
+}
+
 type FileSystem struct {
 	fs absfs.FileSystem
 }
@@ -111,14 +124,6 @@ func (f *FileSystem) Chown(name string, uid, gid int) error {
 	return f.fs.Chown(name, uid, gid)
 }
 
-func (f *FileSystem) Separator() uint8 {
-	return f.fs.Separator()
-}
-
-func (f *FileSystem) ListSeparator() uint8 {
-	return f.fs.ListSeparator()
-}
-
 func (f *FileSystem) Chdir(dir string) error {
 	return f.fs.Chdir(dir)
 }
@@ -149,6 +154,18 @@ func (f *FileSystem) RemoveAll(path string) (err error) {
 
 func (f *FileSystem) Truncate(name string, size int64) error {
 	return f.fs.Truncate(name, size)
+}
+
+func (f *FileSystem) ReadDir(name string) ([]fs.DirEntry, error) {
+	return f.fs.ReadDir(name)
+}
+
+func (f *FileSystem) ReadFile(name string) ([]byte, error) {
+	return f.fs.ReadFile(name)
+}
+
+func (f *FileSystem) Sub(dir string) (fs.FS, error) {
+	return absfs.FilerToFS(f, dir)
 }
 
 type SymlinkFileSystem struct {
@@ -201,14 +218,6 @@ func (f *SymlinkFileSystem) Chown(name string, uid, gid int) error {
 	return f.sfs.Chown(name, uid, gid)
 }
 
-func (f *SymlinkFileSystem) Separator() uint8 {
-	return f.sfs.Separator()
-}
-
-func (f *SymlinkFileSystem) ListSeparator() uint8 {
-	return f.sfs.ListSeparator()
-}
-
 func (f *SymlinkFileSystem) Chdir(dir string) error {
 	return f.sfs.Chdir(dir)
 }
@@ -239,6 +248,18 @@ func (f *SymlinkFileSystem) RemoveAll(path string) (err error) {
 
 func (f *SymlinkFileSystem) Truncate(name string, size int64) error {
 	return f.sfs.Truncate(name, size)
+}
+
+func (f *SymlinkFileSystem) ReadDir(name string) ([]fs.DirEntry, error) {
+	return f.sfs.ReadDir(name)
+}
+
+func (f *SymlinkFileSystem) ReadFile(name string) ([]byte, error) {
+	return f.sfs.ReadFile(name)
+}
+
+func (f *SymlinkFileSystem) Sub(dir string) (fs.FS, error) {
+	return absfs.FilerToFS(f, dir)
 }
 
 // Lstat returns a FileInfo describing the named file. If the file is a

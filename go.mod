@@ -1,13 +1,19 @@
 module github.com/absfs/ptfs
 
-go 1.25.4
+go 1.23
 
 require (
-	github.com/absfs/absfs v0.0.0-20251109181304-77e2f9ac4448
-	github.com/absfs/memfs v0.0.0-20251122223403-0826c6ce3884
+	github.com/absfs/absfs v0.0.0-20251208232938-aa0ca30de832
+	github.com/absfs/fstesting v0.0.0-20251207022242-d748a85c4a1e
+	github.com/absfs/memfs v0.0.0-20251208234552-baa4e3ef7566
 )
 
-require (
-	github.com/absfs/fstesting v0.0.0-20251206231118-7a50ca2cce8a // indirect
-	github.com/absfs/inode v0.0.0-20190804195220-b7cd14cdd0dc // indirect
+require github.com/absfs/inode v0.0.0-20251208170702-9db24ab95ae4 // indirect
+
+replace (
+	github.com/absfs/absfs => ../absfs
+	github.com/absfs/fstesting => ../fstesting
+	github.com/absfs/fstools => ../fstools
+	github.com/absfs/inode => ../inode
+	github.com/absfs/memfs => ../memfs
 )
