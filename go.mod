@@ -1,6 +1,6 @@
 module github.com/absfs/ptfs
 
-go 1.23
+go 1.21
 
 require (
 	github.com/absfs/absfs v1.0.0
